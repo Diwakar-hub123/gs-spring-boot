@@ -9,7 +9,7 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '4c8e7db9-7472-409e-8b5a-49c63cab73e1'
+  azureSubscription: '02a1c77c-0965-4976-b13b-8c339752bbc9'
   
   # Web app name
   webAppName: 'java-spring-boot'
@@ -24,7 +24,7 @@ stages:
   - job: MavenPackageAndPublishArtifacts
     displayName: Maven Package and Publish Artifacts
     pool:
-      vmImage: $(vmImageName)
+      name: Default
     
     steps:
     - task: Maven@3
@@ -53,7 +53,7 @@ stages:
     displayName: Deploy Linux Web App
     environment: 'development'
     pool: 
-      vmImage: $(vmImageName)
+      name: Default
     strategy:
       runOnce:
         deploy:
